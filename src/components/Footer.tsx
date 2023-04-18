@@ -6,9 +6,9 @@ export interface IFooter{
   
   const Footer: React.FC<IFooter> = () => {
     return (
-    <footer className="bg-gray-200 dark:bg-gray-900 w-full">
+    <footer className="bg-slate-300 dark:bg-gray-900 w-full absolute top-[110vh]">
 
-    <div className="container px-4 py-6 bg-gray-200 dark:bg-gray-700 flex flex-col md:flex md:flex-row md:justify-between ">
+    <div className="container px-4 py-6 flex flex-col md:flex md:flex-row md:justify-between ">
         <span className=" text-gray-500 dark:text-gray-300 sm:justify-center">© 2023 <a href="https://flowbite.com/">Окопні свічки</a>.
         </span>
         <div className="flex  space-x-6 sm:justify-center  text-gray-500 dark:text-gray-300">
