@@ -18,7 +18,7 @@ export default function Home() {
       <main className='container text-center'>
       <h1 className="">Про нас</h1>
       <h2 className=''>Вітаємо на нашому сайті!</h2>
-<p className="">    
+<p className="mb-8">    
 
 Ми родина волонтерів, яка з жовтня 2022-го року передає "тепло" захисникам на передовій.
 
