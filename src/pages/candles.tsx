@@ -23,10 +23,10 @@ export default function Home() {
     </h1>
    <h2 className=''>Замовлення відбуваються лише через <Link className='text-phOrange' href="https://www.google.com">додаток</Link></h2>
    </div>
-    <div className='w-[90%] mx-auto mt-10 flex justify-between'>
-    <CandleCard image="/candle1.png" size="Mala" weight='80g' timeOfBurning='1s' ></CandleCard>
-    <CandleCard image="/candle1.png" size="Mala" weight='80g' timeOfBurning='1s' ></CandleCard>
-    <CandleCard image="/candle1.png" size="Mala" weight='80g' timeOfBurning='1s' ></CandleCard>
+    <div className='w-[90%] mx-auto mt-10 flex  justify-center'>
+    <CandleCard image="/candle1.png" size="Мала" weight='80g' timeOfBurning='1s' candleWidth='15cm' candleHeight='25cm' ></CandleCard>
+    <CandleCard image="/candle1.png" size="Середня" weight='300g' timeOfBurning='2s' candleWidth='16cm' candleHeight='26cm' ></CandleCard>
+    <CandleCard image="/candle1.png" size="Велика" weight='400g' timeOfBurning='3s' candleWidth='17cm' candleHeight='27cm' ></CandleCard>
     </div>
     
       </main>

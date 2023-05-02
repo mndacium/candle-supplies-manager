@@ -6,12 +6,12 @@ export interface IFooter{
   
   const Footer: React.FC<IFooter> = () => {
     return (
-    <footer className="bg-slate-300 dark:bg-gray-900 w-full absolute top-[110vh]">
+    <footer className="bg-slate-300 dark:bg-gray-900 mt-auto ">
 
-    <div className="container px-4 py-6 flex flex-col md:flex md:flex-row md:justify-between ">
-        <span className=" text-gray-500 dark:text-gray-300 sm:justify-center">© 2023 <a href="https://flowbite.com/">Окопні свічки</a>.
+    <div className="container px-4 py-6 flex flex-col justify-items-end md:flex-row md:justify-between ">
+        <span className=" text-gray-500 dark:text-gray-300 sm:justify-center">© 2023 Окопні свічки.
         </span>
-        <div className="flex  space-x-6 sm:justify-center  text-gray-500 dark:text-gray-300">
+        <div className="flex space-x-6   text-gray-500 dark:text-gray-300">
         <span className="">Ми в Instagram</span>
             <a href="#" className=" hover:text-gray-900 dark:hover:text-white">
            

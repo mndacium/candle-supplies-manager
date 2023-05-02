@@ -47,12 +47,7 @@ const Header: React.FC<IHeader> = () => {
               <Link href="/candles" className="px-3 py-2 flex   uppercase font-bold leading-snug  hover:opacity-75 button-animation"> Замовити свічки</Link>
                 
               </li>
-              <li className="nav-item">
-              <Link href="/login" className="px-3 py-2 flex   uppercase font-bold leading-snug  hover:opacity-75 button-animation">Увійти</Link>
-              
-                  
-              
-              </li>
+   
             </ul>
           </div>
         </div>
