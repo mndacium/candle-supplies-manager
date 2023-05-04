@@ -2,18 +2,15 @@ import Head from "next/head";
 
 import { Inter } from "next/font/google";
 import LoginButton from "@/components/LoginButton";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
-import { initFirebase } from "@/firebase/config";
+import Link from "next/link";
+import type { ReactElement } from 'react'
+import Layout from "@/components/Layout";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  initFirebase();
-  const auth = getAuth();
-  const signIn = async (phone: string, password: string) => {
-    const result = signInWithEmailAndPassword(auth, phone, password);
-    console.log(result)
-  };
+  
 
   return (
     <>
@@ -28,9 +25,16 @@ export default function Home() {
       </Head>
       <main className="container">
         <h1 className="text-center ">Новини та звіти</h1>
-        <button onClick={()=>signIn("pamapolya@gmail.com","Ja17nuary")}>login</button>
+        <Link href={"/login"}>login</Link>
 
       </main>
     </>
   );
+}
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout>
+     {page}
+    </Layout>
+  )
 }

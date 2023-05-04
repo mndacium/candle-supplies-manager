@@ -2,6 +2,8 @@ import Head from 'next/head'
 
 import { Inter } from 'next/font/google'
 import Slider from '@/components/Slider'
+import type { ReactElement } from 'react'
+import Layout from "@/components/Layout";
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -31,5 +33,14 @@ export default function Home() {
 <Slider slides={["/putinhuilo.png"]}></Slider>
       </main>
     </>
+  )
+}
+
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout>
+     {page}
+    </Layout>
   )
 }

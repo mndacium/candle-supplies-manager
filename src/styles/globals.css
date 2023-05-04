@@ -34,7 +34,7 @@
     }
   
     .nav-item{
-        @apply mx-2
+        @apply  relative mx-2 overflow-visible
     }
     
   }
