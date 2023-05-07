@@ -22,7 +22,7 @@ const Carousel: React.FC<ICarousel> = ({ slides }) => {
   };
 
   return (
-    <div className="container h-[40vh] w-[100%] xl:w-[70%] m-auto relative ">
+    <div className="container h-[60vh] w-[100%] xl:w-[70%] m-auto relative ">
       <div
         style={{ backgroundImage: `url(${slides[currIndex]})` }}
         className="w-full h-full bg-center  bg-cover bg-no-repeat"

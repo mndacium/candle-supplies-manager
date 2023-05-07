@@ -18,12 +18,12 @@ const CandleCard: React.FC<ICandleCard> = ({
   candleHeight
 }) => {
   return (
-    <div className="w-[75%] md:w-1/2 lg:w-[27%] max-w-lg  rounded  transition duration-500 shadow-md hover:shadow-xl m-10  ">
+    <div className=" max-w-lg min-w-[30%]  rounded  transition duration-500 shadow-md hover:shadow-xl m-10  mt-16">
       <div className="group relative">
-        <div className="opacity-0 transition group-hover:opacity-100   duration-300 w-[100%] h-[25px] z-10 border-2 border-black border-b-0 absolute -mt-10 text-center"><p className="-mt-10">{candleWidth}</p></div>
-        <div className="opacity-0 transition group-hover:opacity-100  duration-300 z-10  absolute  -mt-20  "></div>
+        <div className="hidden transition group-hover:block   duration-300 w-[100%] h-[25px] z-10 border-2 border-black border-b-0 absolute -mt-10 text-center"><p className="-mt-10">{candleWidth}</p></div>
+        <div className="hidden transition group-hover:block   duration-300 z-10  absolute  -mt-20  "></div>
         <div className="relative">
-        <div className="opacity-0 transition group-hover:opacity-100  duration-300  w-[25px] h-[100%] z-10 border-2 border-black border-l-0 absolute right-0 -mr-10 "><div className="relative  h-[100%] flex items-center"><p className="absolute -right-16">{candleHeight}</p></div></div>
+        <div className="hidden transition group-hover:block   duration-300  w-[25px] h-[100%] z-10 border-2 border-black border-l-0 absolute right-0 -mr-10 "><div className="relative  h-[100%] flex items-center"><p className="absolute -right-16">{candleHeight}</p></div></div>
         <Image
           className=" transition hover:scale-105 duration-300  z-0"
           src={image}

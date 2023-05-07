@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { Inter } from "next/font/google";
-import LoginButton from "@/components/LoginButton";
+
 import Link from "next/link";
 import type { ReactElement } from 'react'
 import Layout from "@/components/Layout";
@@ -25,7 +25,8 @@ export default function Home() {
       </Head>
       <main className="container">
         <h1 className="text-center ">Новини та звіти</h1>
-        <Link href={"/login"}>login</Link>
+        <div className="text-center"><p>Щоб додавати новини необхідно зайти як  <Link href={"/login"} className="text-2xl  text-phOrange">адміністратор</Link></p></div>
+        
 
       </main>
     </>

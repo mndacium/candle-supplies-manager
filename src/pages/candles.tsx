@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
+  
       <Head>
         <title>Каталог свічок</title>
         <meta name="description" content="Каталог свічок" />
@@ -27,7 +28,7 @@ export default function Home() {
             </Link>
           </h2>
         </div>
-        <div className="w-[90%] mx-auto mt-10 flex  justify-center">
+        <div className="w-[90%] mx-auto mt-10 flex flex-col lg:flex-row  justify-center">
           <CandleCard
             image="/candle1.png"
             size="Мала"

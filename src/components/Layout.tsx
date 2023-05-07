@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import DonateButton from "./DonateButton";
+
 
 export interface ILayout {
   children: React.ReactNode;

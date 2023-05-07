@@ -84,7 +84,7 @@ const Header: React.FC<IHeader> = () => {
                   <div className="z-1 relative"> Замовити свічки</div>
                 </Link>
               </li>
-              <li className="nav-item">
+              <li className="nav-item lg:hidden">
                 <Link
                   href="/donate"
                   className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
