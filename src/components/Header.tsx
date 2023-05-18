@@ -2,12 +2,27 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 export interface IHeader {}
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+import { getAuth ,signOut } from "firebase/auth";
+import { initFirebase } from "@/firebase/config";
+
 
 const Header: React.FC<IHeader> = () => {
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
   const router = useRouter();
   const { pathname } = router;
+  initFirebase();
+  const auth = getAuth();
+  const [isAuthenticated, setIsAuthenticated] = useState(!!auth.currentUser);
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        setIsAuthenticated(false); // Update the authentication state
+      })
+      .catch((error) => {
+        console.log('Sign out error:', error);
+      });
+  };
   return (
     <>
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-1  bg-slate-300 mb-7">
@@ -63,7 +78,6 @@ const Header: React.FC<IHeader> = () => {
                   href="/"
                   className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
                 >
-                  
                   <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
                   <div className="z-1 relative ">Про нас</div>
                 </Link>
@@ -86,18 +100,34 @@ const Header: React.FC<IHeader> = () => {
                   <div className="z-1 relative"> Замовити свічки</div>
                 </Link>
               </li>
-              
-              {pathname.includes("/news") && (<>
-                <li className="nav-item">
-                <Link
-                  href="/login"
-                  className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
-                >
-                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
-                  <div className="z-1 relative"> Зайти як адміністратор</div>
-                </Link>
-              </li>
-              </>)}
+
+              {pathname.includes("/news") && (
+                <>
+                  <li className="nav-item">
+                    {isAuthenticated ? (
+                      // Render the link for authenticated users
+                      <button
+                        onClick={handleSignOut}
+                        className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                      >
+                        <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                        <div className="z-1 relative">Вийти з аккаунту</div>
+                      </button>
+                    ) : (
+                      
+                      <Link
+                        href="/login"
+                        className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                      >
+                        <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                        <div className="z-1 relative">
+                          Зайти як адміністратор
+                        </div>
+                      </Link>
+                    )}
+                  </li>
+                </>
+              )}
               <li className="nav-item lg:hidden">
                 <Link
                   href="/donate"
