@@ -47,7 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       onSubmit={handleSubmit}
       className="w-full max-w-lg px-24 py-8 bg-white rounded-lg shadow-lg relative border-[1px] border-phOrange"
     >
-      <h2 className="text-xl font-bold mb-6">Login</h2>
+      <h2 className="text-2xl font-bold mb-6">Login</h2>
       <Link
         href="/news"
         className="absolute top-0 left-0 m-4 text-gray-700 hover:text-gray-900"
@@ -80,7 +80,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       )}
       
       <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+        <label className="block text-gray-700 font-bold mb-2 text-lg" htmlFor="email">
           Email
         </label>
         <input
@@ -95,7 +95,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       </div>
       <div className="mb-6">
         <label
-          className="block text-gray-700 font-bold mb-2"
+          className="block text-gray-700 font-bold text-lg mb-2"
           htmlFor="password"
         >
           Password

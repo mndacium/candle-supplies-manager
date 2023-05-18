@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import type { ReactElement } from 'react'
 import Layout from "@/components/Layout";
+import Graphic from "@/components/Graphic";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,6 +27,7 @@ export default function Home() {
       <main className="container">
         <h1 className="text-center ">Новини та звіти</h1>
         <div className="text-center"><p>Щоб додавати новини необхідно зайти як  <Link href={"/login"} className="text-2xl  text-phOrange">адміністратор</Link></p></div>
+        <div className="mx-auto w-[60vw] h-[45vh]"><Graphic></Graphic></div>
         
 
       </main>
