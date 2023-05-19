@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 export interface IHeader {}
 import { useRouter } from "next/router";
-import { getAuth ,signOut } from "firebase/auth";
+import { getAuth ,signOut,onAuthStateChanged } from "firebase/auth";
 import { initFirebase } from "@/firebase/config";
 
 
@@ -14,6 +14,15 @@ const Header: React.FC<IHeader> = () => {
   initFirebase();
   const auth = getAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(!!auth.currentUser);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+        
+      setIsAuthenticated(true)
+    } else {
+      setIsAuthenticated(false)
+    }
+  });
+  
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -101,7 +110,7 @@ const Header: React.FC<IHeader> = () => {
                 </Link>
               </li>
 
-              {pathname.includes("/news") && (
+              {(pathname.includes("/news") || isAuthenticated) && (
                 <>
                   <li className="nav-item">
                     {isAuthenticated ? (

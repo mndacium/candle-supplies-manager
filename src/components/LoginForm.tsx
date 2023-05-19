@@ -1,6 +1,11 @@
 import { FormEventHandler, useState } from "react";
 import Link from "next/link";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  getAuth,
+  setPersistence,
+  browserLocalPersistence ,
+} from "firebase/auth";
 import { initFirebase } from "@/firebase/config";
 import { useRouter } from "next/navigation";
 import { FirebaseError } from "firebase/app";
@@ -10,17 +15,16 @@ interface LoginFormProps {}
 const LoginForm: React.FC<LoginFormProps> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string|null>(null);
+  const [error, setError] = useState<string | null>(null);
   initFirebase();
   const auth = getAuth();
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      await setPersistence(auth, browserLocalPersistence ); // Await the promise to set persistence
+  
+      await signInWithEmailAndPassword(auth, email, password); // Await the promise to sign in
+  
       setError(null);
       // Login successful, redirect to news page
       router.push("/news");
@@ -35,11 +39,11 @@ const LoginForm: React.FC<LoginFormProps> = () => {
         default:
           setError("An error occurred. Please try again later.");
       }
-
-     
+  
       // Display error message to user
     }
   };
+  
   const router = useRouter();
 
   return (
@@ -69,18 +73,39 @@ const LoginForm: React.FC<LoginFormProps> = () => {
         </div>
       </Link>
       {error && (
-        <div className="w-full bg-orange-100 border-l-4 border-phOrange text-orange-700 p-4 mb-4 relative " role="alert">
-        <div className="w-[75%]">{error}</div>
-        <button className="absolute top-0 bottom-0 right-2" onClick={() => setError(null)}>
-              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-        </button>
-      </div>
+        <div
+          className="w-full bg-orange-100 border-l-4 border-phOrange text-orange-700 p-4 mb-4 relative "
+          role="alert"
+        >
+          <div className="w-[75%]">{error}</div>
+          <button
+            className="absolute top-0 bottom-0 right-2"
+            onClick={() => setError(null)}
+          >
+            <svg
+              className="h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
       )}
-      
+
       <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2 text-lg" htmlFor="email">
+        <label
+          className="block text-gray-700 font-bold mb-2 text-lg"
+          htmlFor="email"
+        >
           Email
         </label>
         <input
