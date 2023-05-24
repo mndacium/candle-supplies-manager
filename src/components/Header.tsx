@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import Link from "next/link";
 export interface IHeader {}
 import { useRouter } from "next/router";
@@ -14,15 +14,17 @@ const Header: React.FC<IHeader> = () => {
   initFirebase();
   const auth = getAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(!!auth.currentUser);
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-        
-      setIsAuthenticated(true)
-    } else {
-      setIsAuthenticated(false)
-    }
-  });
-  
+
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+          
+        setIsAuthenticated(true)
+      } else {
+        setIsAuthenticated(false)
+      }
+    });
+  },[])
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -48,10 +50,7 @@ const Header: React.FC<IHeader> = () => {
             <button
               className=" cursor-pointer relative group text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
               type="button"
-              onClick={() => {
-                console.log(navbarOpen);
-                setNavbarOpen(!navbarOpen);
-              }}
+              onClick={() => setNavbarOpen(!navbarOpen)}
             >
               <div className="relative flex overflow-hidden items-center justify-center  w-[50px] h-[50px] transform transition-all bg-slate-400 ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md">
                 <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
