@@ -24,7 +24,7 @@ const Header: React.FC<IHeader> = () => {
         setIsAuthenticated(false)
       }
     });
-  },[])
+  },[auth])
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {

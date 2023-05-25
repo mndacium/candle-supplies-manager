@@ -33,12 +33,11 @@ const PostComponent: React.FC<IPostComponent> = ({
     loadImage();
 
    
-    return () => {
-      if (imageUrl) {
-        URL.revokeObjectURL(imageUrl);
-      }
-    };
-  }, [image]);
+    
+        URL.revokeObjectURL(imageUrl as string);
+  
+   
+  }, [imageUrl]);
 
   const imageLayout = imageUrl ? (
     <Image src={imageUrl} width={500} height={500} alt={description} />

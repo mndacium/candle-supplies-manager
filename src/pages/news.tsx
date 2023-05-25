@@ -33,6 +33,7 @@ export default function Home() {
       console.log("There was an error", error);
     }
   }
+  const auth = getAuth();
   useEffect(() => {
     // getPosts();
     onAuthStateChanged(auth, (user) => {
@@ -43,8 +44,8 @@ export default function Home() {
       }
       setIsLoading(false);
     });
-  }, []);
-  const auth = getAuth();
+  }, [auth]);
+  
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     !!auth.currentUser
   );
