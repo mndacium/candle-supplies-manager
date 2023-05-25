@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import CandleCard from "@/components/CandleCard";
-
+import AlertBubble from "@/components/AlertBubble";
 import type { ReactElement } from "react";
 import Layout from "@/components/Layout";
 
@@ -11,7 +11,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <>
-  
       <Head>
         <title>Каталог свічок</title>
         <meta name="description" content="Каталог свічок" />
@@ -19,6 +18,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container">
+        <AlertBubble
+          alertText={
+            <p className="text-2xl">
+              Замовлення відбуваються лише через{" "}
+              <Link className="text-phOrange" href="https://www.google.com">
+                додаток
+              </Link>
+            </p>
+          }
+        ></AlertBubble>
         <div className="text-center">
           <h1 className="">Каталог свічок</h1>
           <h2 className="">
