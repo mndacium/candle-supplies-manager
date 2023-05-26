@@ -24,7 +24,7 @@ export class Post {
   constructor(data: IPost) {
     this.post = data.post;
     
-    this.post.created = new Date(post.created).toLocaleDateString('en-GB', { year: 'numeric', day: '2-digit', month: '2-digit' });
+    this.post.created = new Date(data.post.created).toLocaleDateString('en-GB', { year: 'numeric', day: '2-digit', month: '2-digit' });
     this.presignedLink = data.presignedLink;
   }
 }

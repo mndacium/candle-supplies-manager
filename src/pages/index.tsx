@@ -40,7 +40,7 @@ export default function Home() {
           <li className="mb-4">
             <p>
               <span className="mr-2 text-phOrange">✓</span>
-              Скручуємо модифікованим "равликом", тому свічки мають гарну
+              Скручуємо модифікованим &quot;равликом&quot;, тому свічки мають гарну
               тепловіддачу
             </p>
           </li>
@@ -53,7 +53,7 @@ export default function Home() {
           <li className="mb-4">
             <p>
               <span className="mr-2 text-phOrange">✓</span>
-              Робимо свічки з любов'ю, щоб і зігріти, й усміхнути
+              Робимо свічки з любов&apos;ю, щоб і зігріти, й усміхнути
               котиків-захисників
             </p>
           </li>
