@@ -16,6 +16,8 @@ const LoginForm: React.FC<LoginFormProps> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
   initFirebase();
   const auth = getAuth();
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
@@ -44,7 +46,6 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     }
   };
   
-  const router = useRouter();
 
   return (
     <form

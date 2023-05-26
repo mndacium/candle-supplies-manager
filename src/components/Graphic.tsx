@@ -37,30 +37,6 @@ const Graphic: React.FC<IGraphic> = () => {
       console.log("There was an error", error);
     }
   }
-  async function postData() {
-    try {
-      const response = await fetch(
-        "https://zsu-candles-api.pp.ua/ParaffinTransacrions/CreateParaffinTransaction",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json;charset=utf-8",
-          },
-          body: JSON.stringify("user")
-        }
-       
-      );
-      const responseJson = await response.json();
-      const parsedData: IParaphine[] = responseJson.data.map(
-        (x: any) => new Paraphine(x)
-      );
-
-      setData(parsedData);
-      setIsLoading(false);
-    } catch (error) {
-      console.log("There was an error", error);
-    }
-  }
   useEffect(() => {
     getData();
   }, []);
@@ -74,21 +50,24 @@ const Graphic: React.FC<IGraphic> = () => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="date" />
             <YAxis yAxisId="left" />
-            <YAxis yAxisId="right" orientation="right" />
+            <YAxis yAxisId="right" orientation="right"  />
             <Tooltip />
             <Legend />
             <Line
               yAxisId="left"
               type="monotone"
               dataKey="size"
-              stroke="#8884d8"
+              name="Вага в кг"
+              stroke="#FFA500"
               activeDot={{ r: 8 }}
             />
             <Line
               yAxisId="right"
               type="monotone"
               dataKey="price"
-              stroke="#82ca9d"
+              name="Ціна в грн"
+              stroke="#000000"
+
             />
           </LineChart>
         </ResponsiveContainer>

@@ -30,12 +30,39 @@ export default function Home() {
         ></AlertBubble>
         <div className="text-center">
           <h1 className="">Каталог свічок</h1>
-          <h2 className="">
-            Замовлення відбуваються лише через{" "}
-            <Link className="text-phOrange" href="https://www.google.com">
-              додаток
-            </Link>
+
+          <h2 className="mt-12">
+            Перед замовленням зверніть увагу на наші правила:
           </h2>
+          <ul>
+            <li className="mb-4">
+              <p>
+                <span className="mr-2 text-phOrange  text-4xl">-</span>
+                Ми не надсилаємо свічки західніше Харківської області
+              </p>
+            </li>
+            <li className="mb-4">
+              <p>
+                <span className="mr-2 text-phOrange  text-4xl">-</span>В нас не можна
+                купити чи отримати свічки як сувеніри
+              </p>
+            </li>
+            <li className="mb-4">
+              <p>
+                <span className="mr-2 text-phOrange text-4xl">-</span>
+                Надсилаємо лише на фронт, не для домашнього господарства
+              </p>
+            </li>
+            <li className="mb-4">
+              <p>
+                <span className="mr-2 text-phOrange  text-4xl">-</span>
+                Замовлення відбувається лише через{" "}
+                <Link className="text-phOrange text-3xl" href="https://www.google.com">
+                  додаток
+                </Link>
+              </p>
+            </li>
+          </ul>
         </div>
         <div className="w-[90%] mx-auto mt-10 flex flex-col lg:flex-row  justify-center">
           <CandleCard

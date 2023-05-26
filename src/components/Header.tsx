@@ -1,11 +1,10 @@
 import Image from "next/image";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 export interface IHeader {}
 import { useRouter } from "next/router";
-import { getAuth ,signOut,onAuthStateChanged } from "firebase/auth";
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { initFirebase } from "@/firebase/config";
-
 
 const Header: React.FC<IHeader> = () => {
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
@@ -15,33 +14,32 @@ const Header: React.FC<IHeader> = () => {
   const auth = getAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(!!auth.currentUser);
 
-  useEffect(()=>{
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-          
-        setIsAuthenticated(true)
+        setIsAuthenticated(true);
       } else {
-        setIsAuthenticated(false)
+        setIsAuthenticated(false);
       }
     });
-  },[auth])
+  }, [auth]);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         setIsAuthenticated(false); // Update the authentication state
       })
       .catch((error) => {
-        console.log('Sign out error:', error);
+        console.log("Sign out error:", error);
       });
   };
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-1  bg-slate-300 mb-7">
-        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-1  bg-slate-300 mb-7 overflow-x-hidden">
+        <div className="container px-4 mx-auto flex flex-wrap items-center justify-between w-full">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <Link
               href="/"
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercas"
+              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase "
             >
               {" "}
               <Image src="/putinhuilo.png" width={170} height={60} alt="logo" />
@@ -80,31 +78,35 @@ const Header: React.FC<IHeader> = () => {
             }
             id="example-navbar-danger"
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto ">
+            <li className="nav-item">
                 <Link
                   href="/"
-                  className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                  className=" lg:px-3 py-4 flex relative uppercase font-bold leading-snug  lg:button-animation"
+                  onClick={() => setNavbarOpen(false)}
                 >
-                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
-                  <div className="z-1 relative ">Про нас</div>
+                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[125vw]  z-0 lg:hidden"></div>
+                  <div className="z-1 relative">Про нас</div>
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link
                   href="/news"
-                  className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                  className=" lg:px-3 py-4 flex relative uppercase font-bold leading-snug  lg:button-animation"
+                  onClick={() => setNavbarOpen(false)}
                 >
-                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[125vw] z-0 lg:hidden"></div>
                   <div className="z-1 relative">Новини та звіти</div>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link
                   href="/candles"
-                  className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                  className=" lg:px-3 py-4 flex relative uppercase font-bold leading-snug  lg:button-animation"
+                  onClick={() => setNavbarOpen(false)}
                 >
-                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                  <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[125vw] z-0 lg:hidden"></div>
                   <div className="z-1 relative"> Замовити свічки</div>
                 </Link>
               </li>
@@ -116,18 +118,18 @@ const Header: React.FC<IHeader> = () => {
                       // Render the link for authenticated users
                       <button
                         onClick={handleSignOut}
-                        className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                        className=" py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
                       >
-                        <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                        <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[125vw] z-0 lg:hidden"></div>
                         <div className="z-1 relative">Вийти з аккаунту</div>
                       </button>
                     ) : (
-                      
                       <Link
                         href="/login"
-                        className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                        className=" lg:px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                        onClick={() => setNavbarOpen(false)}
                       >
-                        <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                        <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[125vw] z-0 lg:hidden"></div>
                         <div className="z-1 relative">
                           Зайти як адміністратор
                         </div>
@@ -136,12 +138,14 @@ const Header: React.FC<IHeader> = () => {
                   </li>
                 </>
               )}
-              <li className="nav-item lg:hidden">
+              <li className="nav-item lg:hidden ">
                 <Link
-                  href="/donate"
-                  className="px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                
+                  href="https://send.monobank.ua/jar/2xKEJ87NXq"
+                  className=" lg:px-3 py-4 flex relative uppercase font-bold leading-snug hover:opacity-75 lg:button-animation"
+                  onClick={() => setNavbarOpen(false)}
                 >
-                  <div className="bg-phOrange opacity-75  absolute h-full top-0 left-[-25vw] right-0 w-[150vw] z-0 lg:hidden"></div>
+                  <div className="bg-phOrange opacity-75  absolute h-full top-0 left-[-25vw] right-0 w-[125vw] z-0 lg:hidden"></div>
                   <div className="z-1 relative"> Задонатити на парафін</div>
                 </Link>
               </li>

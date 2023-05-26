@@ -34,8 +34,11 @@ export default function Home() {
     }
   }
   const auth = getAuth();
+  useEffect(()=>{
+    getPosts();
+  },[])
   useEffect(() => {
-    // getPosts();
+    
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuthenticated(true);
@@ -155,7 +158,7 @@ export default function Home() {
                 posts.map((post, index) => (
                   <>
                     <PostComponent
-                      image={post.presignedLink}
+                      imageUrl={post.presignedLink}
                       description={post.post.description}
                       username={post.post.username}
                       created={post.post.created}
