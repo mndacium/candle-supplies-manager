@@ -15,7 +15,7 @@ module.exports = {
         phOrange: '#FFA500',
       },
       fontFamily: {
-        montserrat: ['Montserrat'],
+        montserrat: ["var(--font-montserrat)",...'Montserrat'],
 
       },
     },

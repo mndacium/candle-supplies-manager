@@ -5,8 +5,8 @@ import type { AppProps } from "next/app";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
-  weight: "400",
-  subsets: ["latin"],
+
+  subsets: ["latin","cyrillic"],
   variable: '--font-montserrat'
 });
 
@@ -20,6 +20,6 @@ type AppPropsWithLayout = AppProps & {
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
-<main className={`${montserrat.variable} font-sans`}></main>
+<main className={`${montserrat.variable} font-montserrat`}></main>
   return getLayout(<Component {...pageProps} />);
 }
