@@ -17,6 +17,8 @@ export default function Home() {
   const [posts, setPosts] = useState<IPost[]>();
   const [isParaphineCreation, setIsParaphineCreation] =
     useState<boolean>(false);
+    const [isPostCreation, setIsPostCreation] =
+    useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   async function getPosts() {
     try {
@@ -34,11 +36,10 @@ export default function Home() {
     }
   }
   const auth = getAuth();
-  useEffect(()=>{
-    getPosts();
-  },[])
   useEffect(() => {
-    
+    getPosts();
+  }, []);
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuthenticated(true);
@@ -48,12 +49,16 @@ export default function Home() {
       setIsLoading(false);
     });
   }, [auth]);
-  
+
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     !!auth.currentUser
   );
-
-  
+  function handleParaphineCloseChange(value: boolean): void {
+    setIsParaphineCreation(value);
+  }
+  function handlePostFormCloseChange(value: boolean): void {
+    setIsPostCreation(value);
+  }
   return (
     <>
       <Head>
@@ -67,7 +72,6 @@ export default function Home() {
       </Head>
 
       <main className="container">
-      
         {isLoading ? (
           <div className=" flex justify-center items-center">
             <h1 className="">Loading...</h1>
@@ -80,11 +84,7 @@ export default function Home() {
                 <h2 className="m-4">Додати новий звіт по парафіну</h2>
 
                 <button
-                  onClick={()=>
-                    setIsParaphineCreation(true)
-
-                  
-                  }
+                  onClick={() => setIsParaphineCreation(true)}
                   className="rounded-lg  transition ease-in-out hover:-translate-y-1 hover:scale-110 bg-phOrange duration-200  font-bold leading-none tracking-tight text-gray-900 p-2"
                 >
                   <svg
@@ -108,7 +108,9 @@ export default function Home() {
             {isParaphineCreation ? (
               // Show ParaphineCreationForm
               <div className="mx-auto text-center max-w-5xl h-[45vh] mb-12">
-                <ParaphineCreationForm />
+                <ParaphineCreationForm
+                  handleParaphineCloseChange={handleParaphineCloseChange}
+                />
               </div>
             ) : (
               // Show Graphic component

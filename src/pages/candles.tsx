@@ -66,7 +66,7 @@ export default function Home() {
         </div>
         <div className="w-[90%] mx-auto mt-10 flex flex-col lg:flex-row  justify-center">
           <CandleCard
-            image="/candle1.png"
+            image="/small_candle.jpg"
             size="Мала"
             weight="80g"
             timeOfBurning="1s"
@@ -74,7 +74,7 @@ export default function Home() {
             candleHeight="25cm"
           ></CandleCard>
           <CandleCard
-            image="/candle1.png"
+            image="/mid_candle.jpg"
             size="Середня"
             weight="300g"
             timeOfBurning="2s"
@@ -82,7 +82,7 @@ export default function Home() {
             candleHeight="26cm"
           ></CandleCard>
           <CandleCard
-            image="/candle1.png"
+            image="/big_candle.jpg"
             size="Велика"
             weight="400g"
             timeOfBurning="3s"

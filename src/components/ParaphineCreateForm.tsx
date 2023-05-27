@@ -1,9 +1,12 @@
 
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState} from "react";
 import { IParaphine, Paraphine } from "@/models/IParaphine";
-export interface IParaphineCreationForm {}
+export interface IParaphineCreationForm {
 
-const ParaphineCreationForm: React.FC<IParaphineCreationForm> = () => {
+  handleParaphineCloseChange:(arg: boolean) => void;
+}
+
+const ParaphineCreationForm: React.FC<IParaphineCreationForm> = ({handleParaphineCloseChange}) => {
   const [paraphine, setParaphine] = useState<IParaphine>({
     id:"",
     price: "",
@@ -39,69 +42,74 @@ const ParaphineCreationForm: React.FC<IParaphineCreationForm> = () => {
     } catch (error) {
       console.log("There was an error", error);
     }
-    console.log(newParaphine);
-    // Reset the form
-    setParaphine({
-      id: '',
-      price: '',
-      size: '',
-      date: '',
-    });
+    handleParaphineCloseChange(false);
   };
 
  
    
   return (
     <div className="max-w-md mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Create Paraphine</h1>
-      <form onSubmit={handleSubmit}>
+      
+      <form onSubmit={handleSubmit} className="relative">
+ 
+
+  <div className="mb-4">
+    <label className="block text-gray-700 mb-2 font-semibold text-xl"  htmlFor="price">
+      Кількість витрачених грошей
+    </label>
+    <input
+      className="border border-gray-300 rounded px-4 py-2 w-full"
+      type="text"
+      id="price"
+      name="price"
+      value={paraphine.price}
+      onChange={handleChange}
+    />
+  </div>
+
+  <div className="mb-4">
+    <label className="block text-gray-700 mb-2 font-semibold text-xl" htmlFor="size">
+      Кількість парафіну
+    </label>
+    <input
+      className="border border-gray-300 rounded px-4 py-2 w-full"
+      type="text"
+      id="size"
+      name="size"
+      value={paraphine.size}
+      onChange={handleChange}
+    />
+  </div>
+
+  <div className="mb-4">
+    <label className="block text-gray-700 mb-2 font-semibold text-xl" htmlFor="date">
+      Дата
+    </label>
+    <input
+      className="border border-gray-300 rounded px-4 py-2 w-full"
+      type="date"
+      id="date"
+      name="date"
+      value={paraphine.date}
+      onChange={handleChange}
+    />
+  </div>
+
+  <button
+    className="transition ease-in-out hover:-translate-y-1 hover:scale-105 bg-phOrange duration-200 rounded px-4 py-3 w-full font-bold text-2xl mb-3"
+    type="submit"
+  >
+    Додати
+  </button>
+  <button
+    className="transition ease-in-out hover:-translate-y-1 hover:scale-105 bg-phOrange duration-200 rounded  py-2 w-full font-bold text-2xl"
     
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="price">
-            Price
-          </label>
-          <input
-            className="border border-gray-300 rounded px-4 py-2 w-full"
-            type="text"
-            id="price"
-            name="price"
-            value={paraphine.price}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="size">
-            Size
-          </label>
-          <input
-            className="border border-gray-300 rounded px-4 py-2 w-full"
-            type="text"
-            id="size"
-            name="size"
-            value={paraphine.size}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 mb-2" htmlFor="date">
-            Date
-          </label>
-          <input
-            className="border border-gray-300 rounded px-4 py-2 w-full"
-            type="date"
-            id="date"
-            name="date"
-            value={paraphine.date}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          className=" transition ease-in-out hover:-translate-y-1 hover:scale-105 bg-phOrange duration-200  rounded px-4 py-2  w-full"
-          type="submit"
-        >
-          Create
-        </button>
-      </form>
+    onClick={() => handleParaphineCloseChange(false)}
+  >
+    Відмінити
+  </button>
+</form>
+
     </div>
   );
    

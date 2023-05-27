@@ -42,7 +42,7 @@ const PostComponent: React.FC<IPostComponent> = ({
   const textLayout = isLeftSided ? (
     <div className="w-[50%] text-right ml-2">
       <p>{description}</p>
-      <div className="font-normal text-xl text-gray-400 dark:text-gray-300">
+      <div className="font-normal text-2xl text-gray-400 dark:text-gray-300">
         <div className="">{username}</div>
         <div className="">{created}</div>
       </div>
