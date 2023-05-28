@@ -18,7 +18,7 @@ const Graphic: React.FC<IGraphic> = () => {
   async function getData() {
     try {
       const response = await fetch(
-        "https://zsu-candles-api.pp.ua/ParaffinTransacrions/GetParaffinsStatistic?from=2023-05-23T13%3A41%3A11.010Z&to=2024-05-24T13%3A41%3A11.010Z",
+        "https://zsu-candles-api.pp.ua/ParaffinTransacrions/GetParaffinsStatistic",
         {
           method: "POST",
           headers: {
