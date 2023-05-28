@@ -64,30 +64,30 @@ export default function Home() {
             </li>
           </ul>
         </div>
-        <div className="w-[90%] mx-auto mt-10 flex flex-col lg:flex-row  justify-center">
+        <div className="w-[85%] mx-auto mt-10 flex flex-col lg:flex-row  justify-center">
           <CandleCard
             image="/small_candle.jpg"
             size="Мала"
             weight="80g"
-            timeOfBurning="1s"
-            candleWidth="15cm"
-            candleHeight="25cm"
+            timeOfBurning="2 години"
+            candleWidth="6сm"
+            candleHeight="3.5сm"
           ></CandleCard>
           <CandleCard
             image="/mid_candle.jpg"
             size="Середня"
             weight="300g"
-            timeOfBurning="2s"
-            candleWidth="16cm"
-            candleHeight="26cm"
+            timeOfBurning="3.5 години"
+            candleWidth="8см"
+            candleHeight="7см"
           ></CandleCard>
           <CandleCard
             image="/big_candle.jpg"
             size="Велика"
             weight="400g"
-            timeOfBurning="3s"
-            candleWidth="17cm"
-            candleHeight="27cm"
+            timeOfBurning="4 години"
+            candleWidth="10см"
+            candleHeight="7сm"
           ></CandleCard>
         </div>
       </main>

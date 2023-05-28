@@ -18,7 +18,7 @@ const CandleCard: React.FC<ICandleCard> = ({
   candleHeight
 }) => {
   return (
-    <div className=" max-w-lg min-w-[30%]  rounded  transition duration-500 shadow-md hover:shadow-xl m-10  mt-16">
+    <div className=" max-w-lg min-w-[27%]  rounded  transition duration-500 shadow-md hover:shadow-xl lg:m-16 mt-32 lg:mt-16 relative">
       <div className="group relative">
         <div className="hidden transition group-hover:block   duration-300 w-[100%] h-[25px] z-10 border-2 border-black border-b-0 absolute -mt-10 text-center"><p className="-mt-10">{candleWidth}</p></div>
         <div className="hidden transition group-hover:block   duration-300 z-10  absolute  -mt-20  "></div>
@@ -37,10 +37,10 @@ const CandleCard: React.FC<ICandleCard> = ({
 
       <div className="mx-6 mt-10">
         <h2>{size}</h2>
-        <div className="flex mx-auto justify-between">
+        
           <p>Вага: {weight}</p>
           <p>Час горіння: {timeOfBurning}</p>
-        </div>
+       
       </div>
     </div>
   );
