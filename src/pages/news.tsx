@@ -108,7 +108,7 @@ export default function Home() {
             )}
             {isParaphineCreation ? (
               // Show ParaphineCreationForm
-              <div className="mx-auto text-center max-w-5xl h-[45vh] mb-12">
+              <div className="mx-auto text-center max-w-5xl h-[45vh] mb-24">
                 <ParaphineCreationForm
                   handleFormClose={handleParaphineFormCloseChange}
                 />
