@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import CandleCard from "@/components/CandleCard";
 import AlertBubble from "@/components/AlertBubble";
-import type { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import Layout from "@/components/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [alertDownloadApp, setAlertDownloadApp] = useState<boolean>(false);
   return (
     <>
       <Head>
@@ -18,16 +19,50 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container">
-        <AlertBubble
-          alertText={
-            <p className="text-2xl">
-              Замовлення відбуваються лише через{" "}
-              <a className="text-phOrange" download href="CandleSuppliesManager.apk">
-                додаток
-              </a>
-            </p>
-          }
-        ></AlertBubble>
+        {alertDownloadApp && (
+          <div>
+            <AlertBubble
+            handleClosePopUp={setAlertDownloadApp}
+              alertText={
+                <>
+                 <p className="text-2xl">
+                  Ви впевненні що хочете завантажити{" "}
+                  <a
+                    className="text-phOrange"
+                    download
+                    href="CandleSuppliesManager.apk"
+                  >
+                    мобільний додаток
+                  </a>
+                  ?
+                </p>
+                <div className="my-12 lg:mt-4">
+
+                <a
+                  onClick={() => setAlertDownloadApp(false)}
+                  className=" hover:cursor-pointer rounded-lg text-xl transition ease-in-out hover:-translate-y-1 hover:scale-110 bg-phOrange duration-200  font-bold leading-none tracking-tight text-gray-900 py-3 px-8 m-2"
+                  download
+                  href="CandleSuppliesManager.apk"
+                >
+                  Так
+                </a>
+                <a
+                  onClick={() => setAlertDownloadApp(false)}
+                  className="hover:cursor-pointer rounded-lg text-xl transition ease-in-out hover:-translate-y-1 hover:scale-110 bg-phOrange duration-200  font-bold leading-none tracking-tight text-gray-900 py-3 px-8  m-2"
+                >
+                  Ні
+                </a>
+                </div>
+               
+                </>
+               
+                
+
+              }
+            ></AlertBubble>
+          </div>
+        )}
+
         <div className="text-center">
           <h1 className="">Каталог свічок</h1>
 
@@ -43,8 +78,8 @@ export default function Home() {
             </li>
             <li className="mb-4">
               <p>
-                <span className="mr-2 text-phOrange  text-4xl">-</span>В нас не можна
-                купити чи отримати свічки як сувеніри
+                <span className="mr-2 text-phOrange  text-4xl">-</span>В нас не
+                можна купити чи отримати свічки як сувеніри
               </p>
             </li>
             <li className="mb-4">
@@ -57,9 +92,12 @@ export default function Home() {
               <p>
                 <span className="mr-2 text-phOrange  text-4xl">-</span>
                 Замовлення відбувається лише через{" "}
-                <a className="text-phOrange text-3xl" download href="CandleSuppliesManager.apk">
-                додаток
-              </a>
+                <button
+                  onClick={() => setAlertDownloadApp(true)}
+                  className="text-phOrange text-3xl"
+                >
+                  мобільний додаток
+                </button>
               </p>
             </li>
           </ul>

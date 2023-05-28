@@ -2,13 +2,17 @@ import React, { useState } from "react";
 
 export interface IAlertBubble {
   alertText: React.ReactNode;
+  handleClosePopUp?:(arg:boolean) => void
 }
 
-const AlertBubble: React.FC<IAlertBubble> = ({ alertText }) => {
+const AlertBubble: React.FC<IAlertBubble> = ({ alertText,handleClosePopUp }) => {
   const [showAlert, setShowAlert] = useState<boolean>(true);
 
   const handleCloseAlert = () => {
     setShowAlert(false);
+    if (handleClosePopUp) {
+      handleClosePopUp(false);
+    }
   };
 
   return showAlert ? (
