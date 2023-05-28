@@ -78,7 +78,7 @@ const Header: React.FC<IHeader> = () => {
             }
             id="example-navbar-danger"
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto ">
+            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto text-lg ">
             <li className="nav-item">
                 <Link
                   href="/"
@@ -122,6 +122,7 @@ const Header: React.FC<IHeader> = () => {
                       >
                         <div className="opacity-0 hover:opacity-75 absolute h-full bg-phOrange top-0 left-[-25vw] right-0 w-[125vw] z-0 lg:hidden"></div>
                         <div className="z-1 relative">Вийти з аккаунту</div>
+                        
                       </button>
                     ) : (
                       <Link
@@ -149,6 +150,7 @@ const Header: React.FC<IHeader> = () => {
                   <div className="z-1 relative"> Задонатити на парафін</div>
                 </Link>
               </li>
+              
             </ul>
           </div>
         </div>

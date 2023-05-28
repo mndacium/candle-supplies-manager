@@ -22,9 +22,9 @@ export default function Home() {
           alertText={
             <p className="text-2xl">
               Замовлення відбуваються лише через{" "}
-              <Link className="text-phOrange" href="https://www.google.com">
+              <a className="text-phOrange" download href="CandleSuppliesManager.apk">
                 додаток
-              </Link>
+              </a>
             </p>
           }
         ></AlertBubble>
@@ -57,9 +57,9 @@ export default function Home() {
               <p>
                 <span className="mr-2 text-phOrange  text-4xl">-</span>
                 Замовлення відбувається лише через{" "}
-                <Link className="text-phOrange text-3xl" href="https://www.google.com">
-                  додаток
-                </Link>
+                <a className="text-phOrange text-3xl" download href="CandleSuppliesManager.apk">
+                додаток
+              </a>
               </p>
             </li>
           </ul>

@@ -3,10 +3,10 @@ import { ReactElement, useEffect, useState} from "react";
 import { IParaphine, Paraphine } from "@/models/IParaphine";
 export interface IParaphineCreationForm {
 
-  handleParaphineCloseChange:(arg: boolean) => void;
+  handleFormClose:(arg: boolean) => void;
 }
 
-const ParaphineCreationForm: React.FC<IParaphineCreationForm> = ({handleParaphineCloseChange}) => {
+const ParaphineCreationForm: React.FC<IParaphineCreationForm> = ({handleFormClose}) => {
   const [paraphine, setParaphine] = useState<IParaphine>({
     id:"",
     price: "",
@@ -42,7 +42,7 @@ const ParaphineCreationForm: React.FC<IParaphineCreationForm> = ({handleParaphin
     } catch (error) {
       console.log("There was an error", error);
     }
-    handleParaphineCloseChange(false);
+    handleFormClose(false);
   };
 
  
@@ -104,7 +104,7 @@ const ParaphineCreationForm: React.FC<IParaphineCreationForm> = ({handleParaphin
   <button
     className="transition ease-in-out hover:-translate-y-1 hover:scale-105 bg-phOrange duration-200 rounded  py-2 w-full font-bold text-2xl"
     
-    onClick={() => handleParaphineCloseChange(false)}
+    onClick={() => handleFormClose(false)}
   >
     Відмінити
   </button>

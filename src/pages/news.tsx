@@ -11,14 +11,14 @@ import AlertBubble from "@/components/AlertBubble";
 import PostComponent from "@/components/PostComponent";
 import { IPost, Post } from "@/models/IPost";
 import ParaphineCreationForm from "@/components/ParaphineCreateForm";
+import PostCreationForm from "@/components/PostCreateForm";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [posts, setPosts] = useState<IPost[]>();
   const [isParaphineCreation, setIsParaphineCreation] =
     useState<boolean>(false);
-    const [isPostCreation, setIsPostCreation] =
-    useState<boolean>(false);
+  const [isPostCreation, setIsPostCreation] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   async function getPosts() {
     try {
@@ -38,6 +38,7 @@ export default function Home() {
   const auth = getAuth();
   useEffect(() => {
     getPosts();
+    setIsLoading(false);
   }, []);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -46,14 +47,14 @@ export default function Home() {
       } else {
         setIsAuthenticated(false);
       }
-      setIsLoading(false);
+      
     });
   }, [auth]);
 
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     !!auth.currentUser
   );
-  function handleParaphineCloseChange(value: boolean): void {
+  function handleParaphineFormCloseChange(value: boolean): void {
     setIsParaphineCreation(value);
   }
   function handlePostFormCloseChange(value: boolean): void {
@@ -109,7 +110,7 @@ export default function Home() {
               // Show ParaphineCreationForm
               <div className="mx-auto text-center max-w-5xl h-[45vh] mb-12">
                 <ParaphineCreationForm
-                  handleParaphineCloseChange={handleParaphineCloseChange}
+                  handleFormClose={handleParaphineFormCloseChange}
                 />
               </div>
             ) : (
@@ -120,11 +121,11 @@ export default function Home() {
               </div>
             )}
 
-            {isAuthenticated && (
+            {(isAuthenticated && isPostCreation==false) && (
               <div className="flex justify-center items-center">
                 <h2 className="m-4">Додати новий пост</h2>
 
-                <button className="rounded-lg  transition ease-in-out hover:-translate-y-1 hover:scale-110 bg-phOrange duration-200  font-bold leading-none tracking-tight text-gray-900 p-2">
+                <button onClick={()=>setIsPostCreation(true)} className="rounded-lg  transition ease-in-out hover:-translate-y-1 hover:scale-110 bg-phOrange duration-200  font-bold leading-none tracking-tight text-gray-900 p-2">
                   <svg
                     fill="none"
                     stroke="currentColor"
@@ -143,6 +144,9 @@ export default function Home() {
                 </button>
               </div>
             )}
+            {(isAuthenticated && isPostCreation) && (
+              <PostCreationForm username={auth.currentUser?.email as string} handleFormClose={handlePostFormCloseChange}></PostCreationForm>
+            )}
             {!isAuthenticated && (
               <AlertBubble
                 alertText={
@@ -155,7 +159,7 @@ export default function Home() {
                 }
               ></AlertBubble>
             )}
-            <div className="flex justify-center items-center flex-col">
+            <div className="flex  flex-col">
               {posts &&
                 posts.map((post, index) => (
                   <>

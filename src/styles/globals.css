@@ -9,6 +9,7 @@
       @apply text-black;
       @apply font-montserrat;
       @apply text-base;
+      @apply tracking-wider;
      
       
     }

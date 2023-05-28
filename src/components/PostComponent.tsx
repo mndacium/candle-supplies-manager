@@ -34,33 +34,35 @@ const PostComponent: React.FC<IPostComponent> = ({
   }, [imageUrl]);
 
   const imageLayout = imageUrl ? (
-    <Image src={imageUrl} width={500} height={500} alt={description} />
+    <Image src={imageUrl} width={500} height={500} alt={description} className="mb-6" />
   ) : (
-    <div className="w-[500px] h-[500px] bg-gray-200"></div>
+    <div className="w-[500px] h-[500px] bg-gray-200 mb-6"></div>
   );
 
-  const textLayout = isLeftSided ? (
-    <div className="w-[50%] text-right ml-2">
+  const textLayout = (
+    <div className="w-[100% lg:w-[50%] ml-2">
       <p>{description}</p>
-      <div className="font-normal text-2xl text-gray-400 dark:text-gray-300">
-        <div className="">{username}</div>
-        <div className="">{created}</div>
-      </div>
-    </div>
-  ) : (
-    <div className="w-[50%] text-left mr-2">
-      <p>{description}</p>
-      <div className="font-normal text-xl text-gray-400 dark:text-gray-300">
-        <div className="">{username}</div>
-        <div className="">{created}</div>
+      <div className="font-normal text-xl text-gray-400 dark:text-gray-400">
+        <div>{username}</div>
+        <div>{created}</div>
       </div>
     </div>
   );
 
   return (
-    <div className="flex justify-around my-8">
-      {imageLayout}
-      {textLayout}
+    <div className={`flex flex-col lg:flex-row justify-around lg:items-center my-8 pb-12 border-b-2 border-phOrange`}>
+      {isLeftSided ? (
+        <>
+          {imageLayout}
+          
+          {textLayout}
+        </>
+      ) : (
+        <>
+          {textLayout}
+          {imageLayout}
+        </>
+      )}
     </div>
   );
 };
