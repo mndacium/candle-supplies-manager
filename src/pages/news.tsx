@@ -26,11 +26,19 @@ export default function Home() {
         "https://zsu-candles-api.pp.ua/Post/GetAllPosts"
       );
       const responseJson = await response.json();
+      responseJson.data.sort((a:any, b:any) => {
+        const dateA = new Date(a.post.created);
+        const dateB = new Date(b.post.created);
+        
+        return dateB.valueOf() - dateA.valueOf();
+      });
       const parsedData: IPost[] = responseJson.data.map(
         (x: any) => new Post(x)
       );
-
+     
+      console.log(parsedData)
       setPosts(parsedData);
+
     } catch (error) {
       console.log("There was an error", error);
     }
